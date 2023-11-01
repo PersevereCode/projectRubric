@@ -519,281 +519,46 @@
 <body>
   <div id="app"></div>
   <script>
-      (function (window) {
+      (async function (window) {
         "use strict";
+        const res = await fetch('capstone1.json')
+        const RUBRIC = await res.json();
+        let totalPossible= 0;
+        const categories = [];
+        function makeModelFromRubric(){
+          for (let section of RUBRIC.sections){
+            const questions = [];
+            for(let question of section.questions){
+              const questionObj = {
+                title: question.criteria,
+                type: question.type,
+                score : question.score
+              };
+              totalPossible += question.score
 
-        function Model() {
-          this.title = `Unit 2 Advanced CSS HW Rubric (Coding)`;
-          this.categories = [
-            {
-              title: "Deployment",
-              subtitle: null,
-              score: 0,
-              questions: [
-                {
-                  title: "Student submitted deployed live application URL",
-                  score: 8,
-                  type: "true false",
-                  message: "Application isn't deployed",
-                  status: false
-                },
-                {
-                  title:
-                    "Application loads at deployed URL (no 404, or Heroku/GH Pages error)",
-                  score: 8,
-                  type: "true false",
-                  message: "Application isn't deployed",
-                  status: false
-                },
-                {
-                  title: "Student submitted application GitHub URL",
-                  score: 8,
-                  type: "true false",
-                  message: "Missing GitHub submission URL",
-                  status: false
-                },
-                {
-                  title: "GitHub Repo contains application code",
-                  score: 8,
-                  type: "true false",
-                  message: "GitHub repo is empty",
-                  status: false
-                }
-              ]
-            },
-            {
-              title: "Technical Acceptance Criteria",
-              subtitle:
-                "Keep your browser console open and watch out for errors from this point forward.",
-              score: 0,
-              questions: [
-                {
-                  title:
-                    "Homepage contains a centered Heading with the school name",
-                  score: 5,
-                  type: "true false",
-                  message: "Homepage does not have a centered heading with the school name",
-                  status: false
-                },
-                {
-                  title:
-                    "Uses a color theme present throughout",
-                  score: 5,
-                  type: "true false",
-                  message: "Homepage does not have a color these and/or does not have color",
-                  status: false
-                },
-                {
-                  title: "The body section of the homepage takes up 50% of the page in width",
-                  score: 5,
-                  type: "true false",
-                  message: "The body section of the homepage is either too large or too small per the request",
-                  status: false
-                },
-                {
-                  title: "The homepage body contains inline links to other sites/locations",
-                  score: 5,
-                  type: "true false",
-                  message: "The homepage body does not contain inline links to other sites/locations",
-                  status: false
-                },
-                {
-                  title: "The homepage body reflects college professionalism and utilizes lists and links to drive the flow",
-                  score: 5,
-                  type: "likert",
-                  options: [
-                    {
-                      message: "The homepage does not look professional or use organization or links",
-                      score: 0
-                    },
-                    {
-                      message: "The homepage either looks professional or uses organization to drive website flow",
-                      score: 3
-                    },
-                    {
-                      message: "The homepage body reflects college professionalism and utilizes lists and links to drive the flow",
-                      score: 5
-                    }
-                  ],
-                  message: "",
-                  status: false
-                },
-                {
-                  title:
-                    "There are headings present and identifiable on the homepage",
-                  score: 5,
-                  type: "true false",
-                  message:
-                    "There are not headings present and identifiable on the homepage",
-                  status: false
-                },
-                {
-                  title:
-                    "The course choices give a list of at least 10 courses and an option to see more",
-                  score: 5,
-                  type: "true false",
-                  message:
-                  "The course choices section is missing some or all of required courses",
-                  status: false
-                },
-                {
-                  title:
-                    "The course choices section takes up 25% of the page's width",
-                  score: 5,
-                  type: "true false",
-                  message:
-                  "The course choices section takes up too much or too little of the page's width per the request",
-                  status: false
-                },
-                {
-                  title:
-                    "The navigation section takes up 25% of the page's width",
-                  score: 5,
-                  type: "true false",
-                  message:
-                  "The navigation section takes up too much or too little of the page's width per the request",
-                  status: false
-                },
-                {
-                  title: "The application's navigation includes inert links to 6 sections",
-                  score: 5,
-                  type: "likert",
-                  options: [
-                    {
-                      message: "The homepage's navigation doesn't include any links",
-                      score: 0
-                    },
-                    {
-                      message: "The homepage's navigation is missing 3 links",
-                      score: 1
-                    },
-                    {
-                      message: "The homepage's navigation is missing a link",
-                      score: 3
-                    },
-                    {
-                      message: "The homepage's navigation includes at least 6 links to sections on the page",
-                      score: 5
-                    }
-                  ],
-                  message: "",
-                  status: false
-                },
-                {
-                  title: "The application's navigation links change/animate on hovering",
-                  score: 5,
-                  type: "true false",
-                  message: "The navigation links to not respond when hovered",
-                  status: false
-                },
-                {
-                  title: "The homepage contains a footer with a reference to the college name",
-                  score: 5,
-                  type: "true false",
-                  message: "The homepage does not contain a footer with a reference to the college name",
-                  status: false
-                },
-                {
-                  title: "The homepage uses flexbox and/or cssGrid appropriately",
-                  score: 5,
-                  type: "likert",
-                  options: [
-                    {
-                      message: "The homepage is missing cssGrid and flexbox",
-                      score: 0
-                    },
-                    {
-                      message: "The homepage references flexbox or grid but does not show a significant change",
-                      score: 1
-                    },
-                    {
-                      message: "The homepage uses flexbox inappropriately for the context",
-                      score: 3
-                    },
-                    {
-                      message: "The homepage uses flexbox and/or cssGrid appropriately",
-                      score: 5
-                    }
-                  ],
-                  message: "",
-                  status: false
-                },
-              ]
-            },
-            {
-              title: "Repository Quality",
-              subtitle: null,
-              score: 0,
-              questions: [
-                {
-                  title: "Repository has a unique name",
-                  score: 2,
-                  type: "true false",
-                  message: "Repo doesn't have a unique name",
-                  status: false
-                },
-                {
-                  title:
-                    "Repository follows best practices for file structure and naming conventions",
-                  score: 2,
-                  type: "true false",
-                  message:
-                    "Code doesn't follow recommended file/folder structure",
-                  status: false
-                },
-                {
-                  title:
-                    "Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.",
-                  score: 2,
-                  type: "true false",
-                  message:
-                    "Code doesn't follow good practices for class/id names, indentation, lacks quality comments",
-                  status: false
-                },
-                {
-                  title:
-                    "Repository contains multiple descriptive commit messages",
-                  score: 2,
-                  type: "true false",
-                  message:
-                    "Repo doesn't contain multiple descriptive commit messages",
-                  status: false
-                }
-              ]
-            },
-            {
-              title: "Application Quality",
-              subtitle: null,
-              score: 0,
-              questions: [
-                {
-                  title: "Homepage resembles the expected look of a college homepage as described in homework instructions",
-                  score: 15,
-                  type: "likert",
-                  options: [
-                    {
-                      message: "Homepage does not resemble the expected look of a college homepage as described in homework instructions",
-                      score: 0
-                    },
-                    {
-                      message: "Homepage could resemble the expected look of a college homepage a lot more closely",
-                      score: 5
-                    },
-                    {
-                      message: "Homepage could resemble the expected look of a college homepage a little more closely",
-                      score: 10
-                    },
-                    {
-                      message: "Homepage resembles the expected look of a college homepage as described in homework instructions",
-                      score: 15
-                    }
-                  ],
-                  message: "",
-                  status: false
-                }
-              ]
-            },
-            {
+              if(question.type === 'boolean'){
+                questionObj.score = question.score
+                questionObj.message = question.message
+              }else if(question.type === 'likert'){
+                questionObj.options = question.options.map((element)=> {
+                  return {message: element.description,
+                          score: element.score}
+                })
+              }else{
+                console.log(`Error in rendering question ${question}`)
+              }
+              questions.push(questionObj)
+            }
+            let category = {
+              title : section.sectionTitle,
+              subtitle : section.message,
+              score : 0,
+              questions : questions
+            };
+            categories.push(category)
+            
+          }
+          categories.push({
               title: "Academic Integrity",
               subtitle:
                 "If any of of the following are true, partner with your instructor to investigate plagiarism. Contact your SSM if you believe plagiarism has occurred.",
@@ -802,7 +567,7 @@
                 {
                   title: "Application contains a low number of commits",
                   score: 0,
-                  type: "true false",
+                  type: "boolean",
                   message: null,
                   status: false
                 },
@@ -810,7 +575,7 @@
                   title:
                     "Application codebase appears advanced for the student, at this point in the course, or in general",
                   score: 0,
-                  type: "true false",
+                  type: "boolean",
                   message: null,
                   status: false
                 },
@@ -818,13 +583,18 @@
                   title:
                     "Application package.json file references a different author and/or repository",
                   score: 0,
-                  type: "true false",
+                  type: "boolean",
                   message: null,
                   status: false
                 }
               ]
-            }
-          ];
+            })
+          return categories;
+        }
+
+        function Model() {
+          this.title = RUBRIC.projectName;
+          this.categories = makeModelFromRubric();
 
           this.initStorage();
         }
@@ -933,7 +703,7 @@
             let categoryTotal = 0;
 
             catQuestions.forEach(question => {
-              if (question.type === "true false") {
+              if (question.type === "boolean") {
                 if (question.status) {
                   categoryTotal += question.score;
                 }
@@ -992,7 +762,7 @@
           let categoryTotal = 0;
 
           catQuestions.forEach(question => {
-            if (question.type === "true false") {
+            if (question.type === "boolean") {
               if (question.status) {
                 categoryTotal += question.score;
               }
@@ -1008,8 +778,7 @@
         };
 
         Model.prototype.calcGrade = function () {
-          const roundedScore = Math.min(100, Math.ceil(this.score));
-
+          const roundedScore = (Math.min(totalPossible, Math.ceil(this.score))/totalPossible) * 100;
           let letterGrade = "";
 
           if (roundedScore >= 97) {
@@ -1094,7 +863,7 @@
           <legend>
             <span class="title">${title}</span> ${category === "Academic Integrity" ? "" : "<span class='score'><span data-id='" + id + "' class='current-score'>0</span> / " + score + "</span>"}
           </legend>
-          ${type === "true false" ?
+          ${type === "boolean" ?
               `<div class="radio-group">
             <input type="radio" name="${id}" id="${id}-true" value="true">
             <label for="${id}-true">True</label>
@@ -1124,7 +893,7 @@
         View.prototype.createResults = function () {
           return `<div class="card">
         <h2>Recommended Grade: <span class="grade">F</span></h2>
-        <h2 class="totals">Total: (0/120)</h2>
+        <h2 class="totals">Total: (0/${totalPossible})</h2>
         <div class="d-none" role="alert">
           You've selected <strong>True</strong> for one of more Academic
           Integrity prompts and are advised to investigate plagiarism before
@@ -1188,7 +957,7 @@
 
         View.prototype.update = function () {
           const roundedScore = Math.min(100, Math.ceil(this.model.score));
-          this.totals.textContent = `Total: (${roundedScore}/ 100)`;
+          this.totals.textContent = `Total: (${roundedScore}/ ${totalPossible})`;
 
           const letterGrade = this.model.calcGrade();
           this.grade.textContent = letterGrade;

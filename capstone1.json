@@ -1,0 +1,165 @@
+{   "projectName": "Module 2",
+    "sections":[
+        {
+            "sectionTitle": "Deployment",
+            "questions": [
+                {
+                    "criteria": "Student submitted deployed live application URL",
+                    "type": "boolean",
+                    "score": 8,
+                    "message": "Student did not submit a deployed live application URL"
+                },
+                {
+                    "criteria": "Application loads at deployed URL",
+                    "type": "boolean",
+                    "score": 8,
+                    "message": "Application does not load at the deployed URL given"
+                },
+                {
+                    "criteria": "Student submitted application GitHub URL",
+                    "type": "boolean",
+                    "score": 8,
+                    "message": "Student did not submit a GitHub URL"
+                },
+                {
+                    "criteria": "GitHub Repo contains application code",
+                    "type": "boolean",
+                    "score": 8,
+                    "message": "GitHub Repo does not contain application code"
+                }
+            ]},
+        {
+            "sectionTitle": "Technical Acceptance Criteria",
+            "message": "Keep your browser console open and watch out for errors from this point forward.",
+            "questions":[
+            {
+                "criteria": "Application has a title visible and remains static through the program.",
+                "type": "boolean",
+                "score":5,
+                "message": "Application does not have a title visible or disappears from the browser."
+            },
+            {
+                "criteria": "Uses a pleasant color theme throughout",
+                "type": "boolean",
+                "score":5,
+                "message": "Project does not utilize colors to enhance the user experience"
+            },
+            {
+                "criteria": "The application has mobile responsiveness",
+                "type": "boolean",
+                "score":5,
+                "message": "The application does not respond to window-resizing"
+            },
+            {
+                "criteria": "The application has at least three discernable features.",
+                "type": "likert",
+                "score": 15,
+                "options": [
+                    {
+                        "description": "The application does not contain any resemblance of an intended feature.",
+                        "score": 0
+                    },
+                    {
+                        "description": "The application has only one discernible feature.",
+                        "score": 5
+                    },
+                    {
+                        "description": "The application has two discernible features.",
+                        "score": 10
+                    },
+                    {
+                        "description": "The application has three discernible features.",
+                        "score": 15
+                    }
+                ]
+            },
+            {
+                "criteria": "Code does not needlessly repeat itself.",
+                "type": "likert",
+                "score": 5,
+                "options":[
+                    {
+                        "description": "The application code has frequent repetitious code.",
+                        "score": 0
+                    },
+                    {
+                        "description": "The application code repeats itself occasionally but is generally succinct",
+                        "score": 3
+                    },
+                    {
+                        "description": "The application code Code does not needlessly repeat itself.",
+                        "score": 5
+                    }
+                ]
+            },
+            {
+                "criteria": "Code should be readable and properly indented, following camelCase naming conventions.",
+                "type": "likert",
+                "score": 5,
+                "options":[
+                    {
+                        "description": "Variable names are not in camelCase and indentations are frequently misplaced.",
+                        "score": 0
+                    },
+                    {
+                        "description": "Variable names are in camelCase but the code is not indented properly/difficult to read.",
+                        "score": 3
+                    },
+                    {
+                        "description": "The code is readable and properly indented, following camelCase naming conventions.",
+                        "score": 5
+                    }
+                ]}]
+            },
+        {
+            "sectionTitle": "Repository Quality",
+            "questions":[
+            {
+                "criteria": "Repository has a unique name",
+                "type": "boolean",
+                "score":2,
+                "message": "GitHub Repo does not have a unique name"
+            },
+            {
+                "criteria": "Repository follows best practices for file structure and naming conventions",
+                "type": "boolean",
+                "score":2,
+                "message": "Repository does not follow best practices for file structure and naming conventions"
+            },
+            {
+                "criteria": "Repository contains multiple descriptive commit messages",
+                "type": "boolean",
+                "score":2,
+                "message": "Repository does not contain adequate descriptive commit messages"
+            }
+        ]},
+        {
+            "sectionTitle": "Application Quality",
+            "questions": [
+            {
+                "criteria": "Application uses tools taught so far in the course and looks and responds as expected for the current skills of the developer.",
+                "type": "likert",
+                "score": 15,
+                "options": [
+                    {
+                        "description": "Application does not accomplish what it intended.",
+                        "score": 0
+                    },
+                    {
+                        "description": "Application is lacking a completed feel to it. ",
+                        "score": 5
+                    },
+                    {
+                        "description": "The application is missing a polished look but still functions well and accomplishes its purpose.",
+                        "score": 10
+                    },
+                    {
+                        "description": "Application uses tools taught so far in the course and looks and responds as expected for the current skills of the developer.",
+                        "score": 15
+                    }
+                ]
+            }
+        ]}
+        
+    ]
+}
